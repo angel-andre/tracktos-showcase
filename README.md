@@ -1,60 +1,70 @@
 # Tracktos
 
-Aptos wallet intelligence. Paste any Aptos address and Tracktos turns its raw transactions into a living portrait: portfolio, NFTs, DeFi flows and on-chain identity. Then watch the whole network move in real time.
+A friendly, hobby-made window into Aptos. Tracktos started as a way to learn how the Aptos chain works by drawing it: who a wallet moves value with, where a token is flowing right now, and what mainnet looks and sounds like block by block.
 
-**[Open it in your browser → tracktos.com](https://tracktos.com)** · free, no sign-up, installable on your phone
+**[Open it → tracktos.com](https://tracktos.com)** · free, no sign-up, works on phones and installs like an app
 
-> Tracktos is in public beta. Expect rapid iteration.
+![Move Map](screenshots/movemap_desktop_dark.png)
 
-![Tracktos home](screenshots/home_desktop_dark.png)
+## What you can do
 
-## Features
+### Explore a wallet: Move Map
+Paste any Aptos address and its counterparties appear as living streams of value: bubbles sized by volume, flowing in and out of the wallet. Replay its history over time, spot the biggest moves as flares, expand two hops out, filter by token, period and kind (wallets, protocols, contracts), and share a card of the map. Known exchanges and protocols are labelled.
 
-- **Wallet overview**: liquid and staked APT, total USD value, 24h change, transaction count, first and latest activity
-- **Portfolio history** chart by day, week, month or year
-- **Token holdings** with balances, prices and USD value for APT and fungible assets
-- **NFT gallery** with collection details, purchase prices and a premium NFTs showcase
-- **Transaction analytics**: activity heatmap, transaction types, gas spending and top contracts
-- **DeFi activity**: swaps, staking, volume per protocol
-- **Wallet identity**: active days, wallet age, achievement badges and rankings
-- **Shareable cards**: export your wallet stats as an image
-- **Saved wallets** with quick switching, plus mainnet and testnet support
-- **Light and dark themes**
+### Token Flow
+Pick APT, USDC, USDt or any coin type / fungible asset and see its recent transfers as one picture: who is sending, who is receiving, and which exchanges and protocols sit in the middle, over the last hour, day or week.
 
-## Live Network (`/globe`)
+![Token Flow](screenshots/tokenflow_desktop_dark.png)
 
-A 3D globe of the Aptos validator set at its real geographic locations, with pulses for live transactions. Alongside it: live TPS, transaction type breakdown, epoch progress, a live transaction feed and network stats such as staking, supply, block height and total transactions.
+### Live Aptos
+- **Pulse**: mainnet's live transactions turned into light and sound. Several visual modes (Garden, Constellation, Orbit, Rain, Pulse Lines), each with its own in-key instrument palette that follows network activity, big APT and stablecoin moves called out as they happen, a Live Transactions feed linking to the explorer, ambient mode, and **Record 10s** to save a clip with sound.
+- **Network**: a 3D globe of the validator set. Every pulse is a real block, drawn from the validator that proposed it, alongside live TPS, epoch progress, transaction mix, staking and supply.
 
-![Live Network](screenshots/globe_desktop_dark.png)
+![Pulse](screenshots/pulse_desktop_dark.png)
+![Live Network](screenshots/network_desktop_light.png)
 
-## Aptos Pulse (`/pulse`)
+### Wallet explorer
+Balances and staking, portfolio history, token holdings, NFT gallery, transaction analytics, DeFi activity and a playful on-chain identity, with export to image or PDF. Mainnet and testnet.
 
-A live transaction symphony. Every visual and every sound is tied to one real mainnet transaction. Choose a mode (Constellation, Garden, Orbit, Pulse Lines or Rain), adjust flows and speed, turn on sound and take snapshots. A methodology panel explains exactly how each transaction is mapped.
+![Wallet](screenshots/wallet_desktop_dark.png)
 
-![Aptos Pulse](screenshots/pulse_desktop_dark.png)
+### And
+- **Nicknames** for wallets you follow, saved only in your browser
+- **Light and dark** themes
+- Designed for **phones** as carefully as for desktop
 
-## Install (`/install`)
+| | | |
+|---|---|---|
+| ![Home](screenshots/home_mobile_dark.png) | ![Move Map on a phone](screenshots/movemap_mobile_dark.png) | ![Pulse on a phone](screenshots/pulse_mobile_dark.png) |
+| ![Network on a phone](screenshots/network_mobile_dark.png) | ![Wallet on a phone, light](screenshots/wallet_mobile_light.png) | ![Home, light](screenshots/home_desktop_light.png) |
 
-Tracktos is a progressive web app. Add it to your home screen on iPhone, iPad or Android, launch it like a native app and keep using cached data offline.
+## How it fits together
 
-## On mobile
+```
+                    Browser (tracktos.com)
+          React single-page app, canvas & WebGL views
+              │                 │                 │
+              │ static files    │ /api/live*      │ /api/flows*
+              ▼                 │ /api/stats      ▼
+      Cloudflare Pages          │ /api/portfolio  tracktos-flows worker
+                                ▼                 · cron collector every 2 min
+                     tracktos-edge worker         · rolls token transfers into D1
+                     · one shared 2–30 s cache    │
+                       for every visitor          ▼
+                     · wallet stats endpoints   Cloudflare D1
+                                │                 │
+                                └────────┬────────┘
+                                         ▼
+                        Aptos APIs (fullnode REST + indexer GraphQL)
+```
 
-| Home | Live Network | Aptos Pulse |
-| --- | --- | --- |
-| ![Home](screenshots/home_mobile_dark.png) | ![Live Network](screenshots/globe_mobile_dark.png) | ![Aptos Pulse](screenshots/pulse_mobile_dark.png) |
+- **Cloudflare Pages** serves the app.
+- **tracktos-edge** reads live ledger info, recent transactions, block proposers and the validator set once every few seconds and shares that answer with everyone watching, so the live pages stay fast and well inside Aptos rate limits. The browser falls back to reading Aptos directly if it is ever unavailable.
+- **tracktos-flows** collects APT, USDC and USDt transfers on a schedule and keeps rolling windows in D1 for Token Flow.
+- Prices come from public market data.
 
-## Architecture
+## About
 
-- **Front end**: a React single-page app built with Vite and TypeScript, with 3D graphics for the globe and canvas plus Web Audio for Pulse
-- **Hosting**: static assets served from Cloudflare Pages, installable as a PWA
-- **Backend**: serverless functions that gather and aggregate wallet and market data
-- **Data**: the Aptos blockchain, read through its public fullnode and indexer APIs
+Tracktos is a personal side project for learning about Aptos, made with care by [@angelataptos](https://x.com/angelataptos). It is not affiliated with Aptos Labs or the Aptos Foundation. For the authoritative view of the chain, use the [official Aptos Explorer](https://explorer.aptoslabs.com/).
 
-## Credits
-
-Built by [@angelataptos](https://x.com/angelataptos)
-
-## License
-
-Copyright (c) 2026 Angel Fundora. All rights reserved. Source code is private.
-See [LICENSE](LICENSE).
+The source code is private. See [LICENSE](LICENSE): all rights reserved.
