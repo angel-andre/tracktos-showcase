@@ -1,15 +1,27 @@
 # Tracktos
 
-A friendly, hobby-made window into Aptos. Tracktos started as a way to learn how the Aptos chain works by drawing it: who a wallet moves value with, where a token is flowing right now, and what mainnet looks and sounds like block by block.
+A friendly window into Aptos: an explorer for wallets and the network, built to make the chain easy to see and understand.
 
 **[Open it → tracktos.com](https://tracktos.com)** · free, no sign-up, works on phones and installs like an app
 
 ![Move Map](screenshots/movemap_desktop_dark.png)
 
+## Why it exists
+
+I'm a community manager at the Aptos Foundation, in crypto since 2021. Every day people ask me simple questions: what is this wallet doing, where is this token going, how busy is the network? Block explorers answer them, but not in a way most people can *see*. Tracktos draws the answers: who a wallet moves value with, where a token is flowing right now, and what mainnet looks and sounds like block by block. Building it was also how I learned how Aptos works under the hood.
+
+## Who uses it
+
+Aptos community members, holders and curious newcomers who want a visual, phone-friendly way to explore wallets and the network.
+
+## The numbers
+
+*As of October 15, 2026:* Tracktos launched on **October 14, 2026**, so it's early days and I'm not publishing usage numbers yet. It covers **mainnet and testnet**, with five main views: Move Map, Token Flow, Pulse, Network and the Wallet explorer.
+
 ## What you can do
 
 ### Explore a wallet: Move Map
-Paste any Aptos address and its counterparties appear as living streams of value: bubbles sized by volume, flowing in and out of the wallet. Replay its history over time, spot the biggest moves as flares, expand two hops out, filter by token, period and kind (wallets, protocols, contracts), and share a card of the map. Known exchanges and protocols are labelled.
+Paste any Aptos address and its counterparties appear as living streams of value: bubbles sized by volume, flowing in and out of the wallet. Play back its history over time, spot the biggest moves as flares, expand two hops out, filter by token, period and kind (wallets, protocols, contracts), and share a card of the map. Known exchanges and protocols are labelled.
 
 ### Token Flow
 Pick APT, USDC, USDt or any coin type / fungible asset and see its recent transfers as one picture: who is sending, who is receiving, and which exchanges and protocols sit in the middle, over the last hour, day or week.
@@ -38,33 +50,27 @@ Balances and staking, portfolio history, token holdings, NFT gallery, transactio
 | ![Home](screenshots/home_mobile_dark.png) | ![Move Map on a phone](screenshots/movemap_mobile_dark.png) | ![Pulse on a phone](screenshots/pulse_mobile_dark.png) |
 | ![Network on a phone](screenshots/network_mobile_dark.png) | ![Wallet on a phone, light](screenshots/wallet_mobile_light.png) | ![Home, light](screenshots/home_desktop_light.png) |
 
-## How it fits together
+## How I built it
 
-```
-                    Browser (tracktos.com)
-          React single-page app, canvas & WebGL views
-              │                 │                 │
-              │ static files    │ /api/live*      │ /api/flows*
-              ▼                 │ /api/stats      ▼
-      Cloudflare Pages          │ /api/portfolio  tracktos-flows worker
-                                ▼                 · cron collector every 2 min
-                     tracktos-edge worker         · rolls token transfers into D1
-                     · one shared 2–30 s cache    │
-                       for every visitor          ▼
-                     · wallet stats endpoints   Cloudflare D1
-                                │                 │
-                                └────────┬────────┘
-                                         ▼
-                        Aptos APIs (fullnode REST + indexer GraphQL)
-```
+A web app on Cloudflare Pages, with small Cloudflare Workers that read Aptos's public APIs once, cache the answer and share it with every visitor, so live pages stay fast and well inside Aptos rate limits. A scheduled collector rolls recent token transfers into a Cloudflare D1 database for Token Flow.
 
-- **Cloudflare Pages** serves the app.
-- **tracktos-edge** reads live ledger info, recent transactions, block proposers and the validator set once every few seconds and shares that answer with everyone watching, so the live pages stay fast and well inside Aptos rate limits. The browser falls back to reading Aptos directly if it is ever unavailable.
-- **tracktos-flows** collects APT, USDC and USDt transfers on a schedule and keeps rolling windows in D1 for Token Flow.
-- Prices come from public market data.
+## Challenges I solved
+
+- **Accuracy.** Network and staking stats are checked against official Aptos sources, and token prices are matched by each asset's on-chain address rather than by name or symbol, so look-alike tokens can't be mispriced.
+- **Privacy.** Usage is measured with a privacy-first, cookieless counter. Nicknames you give wallets stay in your browser.
+- **Security.** I hardened the site before launch, following web security basics.
+- **Speed on live data.** Shared edge caching keeps the live views smooth for everyone at once.
+
+## What I learned
+
+- **Shipping on Cloudflare**: Pages, Workers, scheduled jobs and D1 working together.
+- **Building in public** with the X community, sharing previews and launch posts.
+- **Iterating from feedback**: refining views and labels based on what people found confusing.
+- **Data accuracy**: verifying every number against official sources before showing it.
+- **Privacy and security basics**: collect less, store it in the browser where possible, and harden what's public.
 
 ## About
 
-Tracktos is a personal side project for learning about Aptos, made with care by [@angelataptos](https://x.com/angelataptos). It is not affiliated with Aptos Labs or the Aptos Foundation. For the authoritative view of the chain, use the [official Aptos Explorer](https://explorer.aptoslabs.com/).
+Tracktos is a personal project I built for learning and growth, made with care by [@angelataptos](https://x.com/angelataptos). It is not affiliated with Aptos Labs or the Aptos Foundation. For the authoritative view of the chain, use the [official Aptos Explorer](https://explorer.aptoslabs.com/).
 
 The source code is private. See [LICENSE](LICENSE): all rights reserved.
