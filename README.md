@@ -2,7 +2,7 @@
 
 A friendly window into Aptos: an explorer for wallets and the network, built to make the chain easy to see and understand.
 
-**[Open it → tracktos.com](https://tracktos.com)** · free, no sign-up, works on phones and installs like an app
+**[Open it → tracktos.com](https://tracktos.com)** · free, no sign-up, works on phones and desktop
 
 ![Move Map](screenshots/movemap_desktop_dark.png)
 
@@ -16,7 +16,7 @@ Aptos community members, holders and curious newcomers who want a visual, phone-
 
 ## The numbers
 
-*As of October 16, 2026:* Tracktos launched on **October 14, 2026**, so it's early days and I'm not publishing usage numbers yet (my own testing would inflate them, so it's now excluded from the counter). It covers **mainnet and testnet**, with six main views: Move Map, Token Flow, Holders, Pulse, Network and the Wallet explorer, plus **163 address labels** taken from the official Aptos Explorer's public list.
+*As of October 16, 2026:* Tracktos launched on **October 14, 2026**, so it's early days and I'm not publishing usage numbers yet (my own testing would inflate them, so it's now excluded from the counter). It covers **mainnet and testnet**, with six main views: Move Map, Token Flow, Holders, Pulse, Network and the Wallet explorer, plus **168 address labels** from the official Aptos Explorer's public list and **8 more** verified on-chain.
 
 ## What you can do
 
