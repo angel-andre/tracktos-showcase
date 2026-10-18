@@ -43,12 +43,18 @@ A stats page for [Decibel](https://decibel.trade), the perpetuals exchange on Ap
 
 - **Headline figures**: all-time perp volume and trading fees, 24h volume, open interest, vault TVL and leaderboard size. On the evening of Oct 17, 2026 the page showed about **$8.35B** all-time perp volume, **$3.28M** all-time trading fees and **$23.6M** in vaults
 - **Daily history since launch**: perp volume, trading fees and open interest at the end of each day
+- **Monthly and weekly totals**: volume, fees, average fee rate and open interest at period end, with the change from the previous period (the running month is marked partial), plus records such as the busiest day (**$73.91M** on Jul 1, 2026) and the highest open interest
+- **Average fee rate**: fees as a share of volume, all-time, over the last 30 days and day by day
+- **Crypto, equities and commodities**: each group's share of 24h volume and open interest, with a day-by-day history from Oct 18, 2026
+- **Accounts in the points program**: how many accounts are in Decibel's points program (**11,723** on Oct 18, 2026), day by day; this is not a count of active traders
 - **All 72 perp markets** (31 crypto, 41 TradFi), with price, 24h and 7d change, 24h volume, open interest, and funding shown per year or per hour
 - **Top movers** of the last 24 hours and what's trending on Decibel
 - **Top vaults** by TVL, with APR, all-time return and depositors
 - **Trader leaderboard**: the top 25 accounts ranked by realized PnL, as on Decibel's own leaderboard, or by volume, with account value, linking to Decibel's full leaderboard
 
 ![Decibel](screenshots/decibel_desktop_dark.png)
+![Decibel monthly totals and records](screenshots/decibel_monthly_desktop_dark.png)
+![Decibel average fee rate](screenshots/decibel_feerate_desktop_dark.png)
 ![Decibel markets](screenshots/decibel_markets_desktop_dark.png)
 ![Decibel trader leaderboard](screenshots/decibel_leaderboard_desktop_dark.png)
 
