@@ -46,7 +46,7 @@ A stats page for [Decibel](https://decibel.trade), the perpetuals exchange on Ap
 - **All 72 perp markets** (31 crypto, 41 TradFi), with price, 24h and 7d change, 24h volume, open interest, and funding shown per year or per hour
 - **Top movers** of the last 24 hours and what's trending on Decibel
 - **Top vaults** by TVL, with APR, all-time return and depositors
-- **Trader leaderboard**, ranked by realized PnL like Decibel's own leaderboard, or by volume, with ROI and account value as Decibel reports them. Where ROI isn't a meaningful return (for example, an account with nothing left in it), the page shows a dash and explains why instead of a misleading −100%
+- **Trader leaderboard**: the top 25 accounts ranked by realized PnL, as on Decibel's own leaderboard, or by volume, with account value, linking to Decibel's full leaderboard
 
 ![Decibel](screenshots/decibel_desktop_dark.png)
 ![Decibel markets](screenshots/decibel_markets_desktop_dark.png)
@@ -87,7 +87,7 @@ Balances and staking, portfolio history, token holdings, NFT gallery, transactio
 
 - **Showing "Unavailable" instead of a wrong number.** Where a figure can't be stated reliably, the site says so. For example, the inequality measure (Gini) isn't shown because 100 holders aren't enough to compute it honestly.
 - **One exchange is most of the chain's traffic.** Decibel was almost all of the live feed, mislabelled as swaps. The fix wasn't a separate page but honest labels and a filter on the one people already use.
-- **A number can be correct and still mislead.** Decibel's leaderboard lists many top accounts at −100% ROI with $0 left in them. Tracktos shows the same rows, but marks those ROIs as not meaningful and says why.
+- **A number can be correct and still mislead.** Decibel's leaderboard lists an ROI it doesn't explain, and for most top accounts it read −100% or 0%. Rather than show a figure people can't interpret, Tracktos leaves it out.
 - **Matching the source.** Decibel's own pages count only the markets it lists, so Tracktos does too, and funding is shown the same way, per hour or per year.
 - **Very busy wallets.** Exchange wallets have millions of transfers; rather than hang, Tracktos recognises them and shows a fast summary.
 - **Live views for everyone at once.** Pulse, Network and Decibel are built to stay smooth when many people have them open at the same time.
