@@ -47,7 +47,7 @@ A stats page for [Decibel](https://decibel.trade), the perpetuals exchange on Ap
 - **Average fee rate**: fees as a share of volume, all-time, over the last 30 days and day by day
 - **Crypto, equities and commodities**: each group's share of 24h volume and open interest, with a day-by-day history from Oct 18, 2026
 - **Accounts in the points program**: how many accounts are in Decibel's points program (**11,723** on Oct 18, 2026), day by day; this is not a count of active traders
-- **All 72 perp markets** (31 crypto, 41 TradFi), with price, 24h and 7d change, 24h volume, open interest, and funding shown per year or per hour
+- **All 72 perp markets** (31 crypto, 36 equities, 5 commodities), filterable by group, with price, 24h and 7d change, 24h volume, open interest, and funding shown per year or per hour
 - **Top movers** of the last 24 hours and what's trending on Decibel
 - **Top vaults** by TVL, with APR, all-time return and depositors
 - **Trader leaderboard**: the top 25 accounts ranked by realized PnL, as on Decibel's own leaderboard, or by volume, with account value, linking to Decibel's full leaderboard
@@ -76,7 +76,7 @@ Balances and staking, portfolio history, token holdings, NFT gallery, transactio
 ### And
 - **Watchlist**: star wallets and tokens and see them together, kept only in your browser
 - **Today on Aptos**: the home page opens with the last 24 hours, the biggest APT, USDC and USDt moves and how many blocks and transactions the network produced
-- **Share links**: every Move Map, Token Flow, Holders and wallet view has a Copy link button that reopens exactly what you were looking at
+- **Share links**: every Move Map, Token Flow, Holders and wallet view has a Copy link button that reopens exactly what you were looking at, and links to any view show their own preview card when posted
 - **Busy wallets** like exchanges get a quick summary instead of a map that would take too long to draw
 - **Nicknames** for wallets you follow, saved only in your browser
 - **Light and dark** themes, and a phone menu designed as carefully as the desktop
