@@ -16,7 +16,7 @@ Aptos community members, holders and curious newcomers who want a visual, phone-
 
 ## The numbers
 
-*As of October 17, 2026:* Tracktos launched on **October 14, 2026**, so it's early days. I'm not publishing usage numbers yet; my own testing is excluded from the count, and three days is too soon to say anything honest.
+*As of October 17, 2026:* I first built Tracktos a year ago as a simple Aptos portfolio site and relaunched it as a full Aptos explorer on **October 14, 2026**, so it's early days. Three days is too soon to say anything honest about usage, so I'm not publishing usage numbers yet. The relaunch post on X had **100,005** impressions (as of October 17, 2026).
 
 - **Eight views**: Move Map, Token Flow, Holders, Watchlist, Pulse, Network, the Wallet explorer and Decibel, on **mainnet and testnet** (Decibel is mainnet only)
 - **176** exchanges, protocols and contracts labelled by name
@@ -96,7 +96,6 @@ Balances and staking, portfolio history, token holdings, NFT gallery, transactio
 - **A number can be correct and still mislead.** Decibel's leaderboard lists an ROI it doesn't explain, and for most top accounts it read −100% or 0%. Rather than show a figure people can't interpret, Tracktos leaves it out.
 - **Matching the source.** Decibel's own pages count only the markets it lists, so Tracktos does too, and funding is shown the same way, per hour or per year.
 - **Very busy wallets.** Exchange wallets have millions of transfers; rather than hang, Tracktos recognises them and shows a fast summary.
-- **Live views for everyone at once.** Pulse, Network and Decibel are built to stay smooth when many people have them open at the same time.
 
 ## What I learned
 
@@ -105,10 +104,10 @@ Balances and staking, portfolio history, token holdings, NFT gallery, transactio
 - **Colour is meaning**: each transaction type gets one colour, and yellow means only Decibel.
 - **Iterating from feedback**: refining views and labels based on what people found confusing.
 - **Building in public** with the X community, sharing previews and launch posts.
-- **Privacy by default**: no accounts and no wallet connect; nicknames, watchlists and preferences stay in your browser.
+- **Open to everyone**: no sign-up and no wallet connect; nicknames, watchlists and preferences stay in your browser.
 
 ## About
 
-Tracktos is a personal project I built for learning and growth, made with care by [@angelataptos](https://x.com/angelataptos). It is not affiliated with Aptos Labs, the Aptos Foundation or Decibel. For the authoritative view of the chain, use the [official Aptos Explorer](https://explorer.aptoslabs.com/).
+Tracktos is a personal project I built for learning and growth, made with care by [@angelataptos](https://x.com/angelataptos). It is an independent project, not an official Aptos or Decibel product. For the authoritative view of the chain, use the [official Aptos Explorer](https://explorer.aptoslabs.com/).
 
 The source code is private. See [LICENSE](LICENSE): all rights reserved.
